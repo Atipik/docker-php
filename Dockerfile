@@ -1,4 +1,4 @@
-FROM marmotz/debian-fr
+FROM marmotz/debian-fr:wheezy
 
 USER root
 
