@@ -27,6 +27,9 @@ RUN sed -i "s@^error_reporting =.*@error_reporting = E_ALL@" /etc/php/7.0/*/php.
 RUN sed -i "s@^display_errors =.*@display_errors = On@" /etc/php/7.0/*/php.ini
 RUN sed -i "s@^display_startup_errors =.*@display_startup_errors = On@" /etc/php/7.0/*/php.ini
 
+# Clean
+RUN rm -rf /var/lib/apt/lists/*
+
 USER nonrootuser
 
 VOLUME [ "/var/php" ]
