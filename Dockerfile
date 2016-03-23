@@ -22,6 +22,9 @@ RUN php5enmod xdebug
 # TIMEZONE in php
 RUN sed -i "s@^;date.timezone =.*@date.timezone = $TIMEZONE@" /etc/php5/cli/php.ini
 
+# conf for php
+RUN sed -i "s@^;always_populate_raw_post_data = -1@always_populate_raw_post_data = -1@" /etc/php5/php/php.ini
+
 # DEV conf for php
 RUN sed -i "s@^error_reporting =.*@error_reporting = E_ALL@" /etc/php5/cli/php.ini
 RUN sed -i "s@^display_errors =.*@display_errors = On@" /etc/php5/cli/php.ini
