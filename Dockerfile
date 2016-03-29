@@ -5,7 +5,7 @@ USER root
 ADD init_php.sh /
 
 # PHP
-RUN echo 'deb http://packages.dotdeb.org wheezy-php56 all' | tee /etc/apt/sources.list.d/dotdeb.list && \
+RUN echo 'deb http://packages.dotdeb.org wheezy-php55 all' | tee /etc/apt/sources.list.d/dotdeb.list && \
     wget -O- -q https://www.dotdeb.org/dotdeb.gpg | apt-key add - && \
     apt-get update -y && \
     apt-get install -y --force-yes php5-cli php5-mysql php5-json php5-xsl php5-intl php5-xdebug php5-curl php5-gd php5-apcu php-pear
