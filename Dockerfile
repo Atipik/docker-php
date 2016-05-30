@@ -5,14 +5,14 @@ USER root
 ADD init_php.sh /
 
 # Upgrade PECL
-RUN apt-get install -y --force-yes php-pear && \
+RUN apt-get update -y && \
+    apt-get install -y --force-yes php-pear && \
     pear clear-cache && \
     pear upgrade
 
 # PHP
 RUN echo 'deb http://packages.dotdeb.org jessie all' | tee /etc/apt/sources.list.d/dotdeb.list && \
     wget -O- -q https://www.dotdeb.org/dotdeb.gpg | apt-key add - && \
-    apt-get update -y && \
     apt-get install -y --force-yes phpphp7.0-cli php7.0-mysql php7.0-json php7.0-xsl php7.0-intl php7.0-xdebug php7.0-curl php7.0-gd php7.0-apcu
 
 # Xdebug
