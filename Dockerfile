@@ -17,7 +17,6 @@ RUN echo "deb http://packages.dotdeb.org jessie all" > /etc/apt/sources.list.d/d
 
 # Xdebug
 ADD xdebug.ini /etc/php/7.0/cli/conf.d/20-xdebug.ini
-ADD xdebug.ini /etc/php/7.0/apache2/conf.d/20-xdebug.ini
 
 # Default php conf
 RUN sed -i "s@^;date.timezone =.*@date.timezone = $TIMEZONE@" /etc/php/7.0/cli/php.ini
