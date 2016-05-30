@@ -16,8 +16,8 @@ RUN echo 'deb http://packages.dotdeb.org jessie all' | tee /etc/apt/sources.list
     apt-get install -y --force-yes phpphp7.0-cli php7.0-mysql php7.0-json php7.0-xsl php7.0-intl php7.0-xdebug php7.0-curl php7.0-gd php7.0-apcu
 
 # Xdebug
-ADD xdebug.ini /etc/php5/mods-available/xdebug.ini
-RUN php5enmod xdebug
+ADD xdebug.ini /etc/php/mods-available/xdebug.ini
+RUN phpenmod xdebug
 
 # Default php conf
 RUN sed -i "s@^;date.timezone =.*@date.timezone = $TIMEZONE@" /etc/php/7.0/cli/php.ini
