@@ -31,6 +31,9 @@ RUN curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer && \
     chmod +x /usr/local/bin/composer
 
+# Mysql client
+RUN apt-get install -y mysql-client
+
 # Clean
 RUN rm -rf /var/lib/apt/lists/*
 
