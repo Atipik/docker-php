@@ -13,7 +13,7 @@ RUN apt-get update -y && \
 RUN echo "deb http://packages.dotdeb.org jessie all" > /etc/apt/sources.list.d/dotdeb.list && \
     wget -O- -q https://www.dotdeb.org/dotdeb.gpg | apt-key add - && \
     apt-get update -y && \
-    apt-get install -y --force-yes php7.0-cli php7.0-mysql php7.0-json php7.0-xsl php7.0-intl php7.0-xdebug php7.0-curl php7.0-gd php7.0-apcu
+    apt-get install -y --force-yes php7.0-cli php7.0-mysql php7.0-json php7.0-xsl php7.0-intl php7.0-xdebug php7.0-curl php7.0-gd php7.0-apcu php7.0-mbstring php7.0-zip
 
 # Xdebug
 ADD xdebug.ini /etc/php/7.0/cli/conf.d/20-xdebug.ini
