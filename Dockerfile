@@ -4,7 +4,7 @@ USER root
 
 ADD init_php.sh /
 
-# Add repo for php 7.2
+# Add repo for php 7.3
 RUN apt-get update -y && \
     apt-get -y install --force-yes apt-transport-https lsb-release ca-certificates && \
     wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
@@ -17,19 +17,19 @@ RUN apt-get update -y && \
 #     pear upgrade
 
 # PHP
-RUN apt-get install -y --force-yes php7.2-cli php7.2-mysql php7.2-json php7.2-xsl php7.2-intl php7.2-xdebug \
-                                   php7.2-curl php7.2-gd php7.2-apcu php7.2-mbstring php7.2-zip
+RUN apt-get install -y --force-yes php7.3-cli php7.3-mysql php7.3-json php7.3-xsl php7.3-intl php7.3-xdebug \
+                                   php7.3-curl php7.3-gd php7.3-apcu php7.3-mbstring php7.3-zip
 
 # Xdebug
-ADD xdebug.ini /etc/php/7.2/cli/conf.d/20-xdebug.ini
+ADD xdebug.ini /etc/php/7.3/cli/conf.d/20-xdebug.ini
 
 # Default php conf
-RUN sed -i "s@^;date.timezone =.*@date.timezone = $TIMEZONE@" /etc/php/7.2/cli/php.ini
+RUN sed -i "s@^;date.timezone =.*@date.timezone = $TIMEZONE@" /etc/php/7.3/cli/php.ini
 
 # DEV conf for php
-RUN sed -i "s@^error_reporting =.*@error_reporting = E_ALL@" /etc/php/7.2/cli/php.ini
-RUN sed -i "s@^display_errors =.*@display_errors = On@" /etc/php/7.2/cli/php.ini
-RUN sed -i "s@^display_startup_errors =.*@display_startup_errors = On@" /etc/php/7.2/cli/php.ini
+RUN sed -i "s@^error_reporting =.*@error_reporting = E_ALL@" /etc/php/7.3/cli/php.ini
+RUN sed -i "s@^display_errors =.*@display_errors = On@" /etc/php/7.3/cli/php.ini
+RUN sed -i "s@^display_startup_errors =.*@display_startup_errors = On@" /etc/php/7.3/cli/php.ini
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php && \
