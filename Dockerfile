@@ -1,4 +1,4 @@
-FROM marmotz/debian-fr
+FROM meteorit/debian-fr
 
 USER root
 
@@ -10,6 +10,10 @@ RUN apt-get update -y && \
     pear upgrade
 
 # PHP
+RUN echo "deb http://packages.dotdeb.org jessie all" > /etc/apt/sources.list.d/dotdeb.list
+RUN wget https://www.dotdeb.org/dotdeb.gpg && apt-key add dotdeb.gpg
+RUN apt-get update
+RUN apt-get --purge --yes remove php5*
 RUN apt-get install -y --force-yes php7.0-cli php7.0-mysql php7.0-json php7.0-xsl php7.0-intl php7.0-xdebug \
                                    php7.0-curl php7.0-gd php7.0-apcu php7.0-mbstring php7.0-zip
 
@@ -25,7 +29,7 @@ RUN sed -i "s@^display_errors =.*@display_errors = On@" /etc/php/7.0/cli/php.ini
 RUN sed -i "s@^display_startup_errors =.*@display_startup_errors = On@" /etc/php/7.0/cli/php.ini
 
 # Composer
-RUN curl -sS https://getcomposer.org/installer | php && \
+RUN curl -sS https://getcomposer.org/composer-1.phar > ./composer.phar && \
     mv composer.phar /usr/local/bin/composer && \
     chmod +x /usr/local/bin/composer
 
